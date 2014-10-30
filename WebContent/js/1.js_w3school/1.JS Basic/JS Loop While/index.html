@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to loop through a block of as long as <em>i</em> is less than 5.</p>
+<button onclick="myFunction()">Try it</button>
+<p id="demo"></p>
+
+<script>
+function myFunction()
+{
+var x="",i=0;
+while (i<5)
+  {
+  x=x + "The number is " + i + "<br>";
+  i++;
+  }
+document.getElementById("demo").innerHTML=x;
+}
+</script>
+
+</body>
+</html>

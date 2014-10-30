@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="Author" content="Gerard Ferrandez at http://www.dhteumeuleu.com/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="HandheldFriendly" content="true">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="description" content="HTML5 Javascript text demo">
+<meta name="keywords" content="text">
+<link rel="canonical" href="http://www.dhteumeuleu.com/road-games">
+<link rel="stylesheet" href="css/slider-wb.css">
+<link rel="shortcut icon" href="favicon.ico"/>
+<title>road games - Interactive DHTML demos</title>
+<style>
+html {
+	overflow: hidden;
+	-ms-touch-action: none;
+	-ms-content-zooming: none;
+}
+body {
+	margin:0;
+	padding:0; 
+	position:absolute;  
+	background:#fff; 
+	width:100%; 
+	height:100%;
+}
+#screen {
+	position:absolute; 
+	text-align:justify;
+	top:50%;
+	left:50%;
+	width:420px; 
+	height:420px;
+	margin-left:-410px;
+	margin-top:-410px;
+	padding:200px;
+	font-size:1.2em;
+	color:#000;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor:default;
+}
+#part1, #part2, #part3 {
+	display:none;
+}
+#logo {
+	opacity:0.35;
+	margin:60px;
+	cursor: pointer;
+}
+#next {
+	position:absolute;
+	margin-top:-50px;
+	top:50%;
+	right:0;
+	border-width:50px;
+	line-height: 0px;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-color: transparent transparent transparent #FF9600;
+	cursor:pointer;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select: none;
+	user-select: none;
+}
+#credits {
+	position:fixed;
+	font-size:1.2em;
+	font-style:italic;
+	bottom:4px;
+	right:10px;
+	background:#fff;
+}
+</style>
+<script src="library/ge1doot.js"></script>
+<script>
+/* 
+ * ===================================================================
+ * TEXT LENS
+ * http://www.dhteumeuleu.com/road-games
+ * Author Gerard Ferrandez - June, 2005
+ * ------------------------------------------
+ * Javascript released under the MIT license
+ * http://www.dhteumeuleu.com/LICENSE.html
+ * last update: 6 Jan 2013
+ * ------------------------------------------
+ * additional credits
+ * Text by Greg FitzPatrick at http://www.plumplucker.com
+ * Images http://www.ancestral.com/art/north_america/mimbres.html
+ * ===================================================================
+ */
+ 
+"use strict";
+
+(function () {
+	var scr, pointer, spans, S = 2000, part = 0;
+	// ==== word constructor ====
+	var CObj = function (elem) {
+		this.css  = elem.style;
+		this.x0   = elem.offsetLeft;
+		this.y0   = elem.offsetTop;
+		this.x    = this.x0;
+		this.y    = this.y0;
+		this.next = true;
+	}
+	// ==== word lens function ====
+	CObj.prototype.anim = function () {
+		var dx = pointer.X - this.x;
+		var dy = pointer.Y - this.y;
+		var d = Math.sqrt(dx * dx + dy * dy);
+		this.x = this.x - S / d * (dx / d) + (this.x0 - this.x) * 0.25;
+		this.y = this.y - S / d * (dy / d) + (this.y0 - this.y) * 0.25;
+		this.css.left =  Math.round(this.x) + "px";
+		this.css.top  =  Math.round(this.y) + "px";
+		return this.next;
+	}
+	// ==== load text ====
+	var load = function() {
+		spans = [];
+		// ---- chapters ----
+		part++;
+		if (part == 4) part = 1;
+		var text = document.getElementById("part"+part).innerHTML;
+		document.getElementById("logo").src = "images/" + document.getElementById("part" + part).className+".gif";
+		// --- pass 1: split the text ----
+		var comp = "";
+		var word = "";
+		var tag = false;
+		for (var i = 0; i < text.length; i++) {
+			var c = text.charAt(i);
+			if (c == "<") {
+				var j = text.indexOf(">", i);
+				word += text.substring(i, j + 1);
+				i = j;
+				tag = true;
+			} else 
+			if (c == " ") {
+				if (tag) {
+					comp += word + "&nbsp; ";
+					tag = false;
+				} else {
+					comp += "<i>" + word + "</i>&nbsp; ";
+				}
+				word = "";
+			} else word += c;
+		}
+		scr.elem.innerHTML = comp;
+		// ---- pass 2: capture offset positions ----
+		var n = scr.elem.getElementsByTagName("*");
+		for (var i = 0; i < n.length; i++) {
+			var word = n[i];
+			spans.push(
+				new CObj(word)
+			);
+		}
+		spans[spans.length - 1].next = false;
+		// ---- pass 3: set position absolute ----
+		for (var i = 0; i < n.length; i++) {
+			var word = n[i];
+			word.style.position = "absolute";
+		}
+		// ---- hide first animation ----
+		anim();
+	},
+	init = function () {
+		// ---- init script ----
+		scr = new ge1doot.Screen({
+			container: "screen"
+		});
+		// ---- init pointer ----
+		pointer = new ge1doot.Pointer({
+			tap: function () {
+				load();
+			}
+		});
+		// ---- load text ----
+		load();
+		// ---- icons click ----
+		document.getElementById("logo").onclick = 
+		document.getElementById("next").onclick = function() {
+			load();
+			return false;
+		}
+		pointer.Y = 10000;
+		// ---- let's go ----
+		run();
+	},
+	// ==== anim ====
+	anim = function () {
+		for (
+			var i = 0; 
+			spans[i++].anim();
+		);
+	},
+	// ==== main loop ====
+	run = function () {
+		anim();
+		requestAnimFrame(run);
+	};
+	return {
+		/* ==== public functions ==== */
+		load : function () {
+			window.addEventListener('load', function () {
+				init();
+			}, false);
+		}
+	}
+
+})().load();
+</script>
+</head>
+<body>
+<img id="logo" src="images/dragonfly.gif">
+<div id="next"></div>
+<div id="screen"></div>
+<div id="credits">A story by Greg FitzPatrick at <a href="http://www.plumplucker.com/">www.plumplucker.com</a> </div>
+
+<div class="dragonfly" id="part1">
+<i style="font-size:60px">Do</i> you think we're suicidal? No man, we're just ordinary, everyday thrill-seekers. We're having fun out there. Some unfortunates end up disintegrated in your radiator or glued to your windscreen, true &#8211; the old and careless or the newbies who don't know the ropes. <br><br> 
+<i style="font-size:60px">But</i> when you think how many of us are out there surfing, proportionately the casualties are, like, infinitesimal. I have been doing this most of my (admittedly short) life. And look: not a scratch on me. 
+</div>
+<div class="flying_insect" id="part2">
+<i style="font-size:60px">This</i> is how it works: You hover above the asphalt in your favorite spot. The cars and trucks are just tiny specks on the horizon at first, but you know they're headed right for you and the adrenaline rush makes your heart sizzle. You don't want to be too low and get smashed, or too high and miss your ride. <br><br> 
+<i style="font-size:60px">As</i> in most sports, timing is everything. One moment you're suspended in space, the next you're swept up in a gruesomely explosive stormwind. You gotta think super fast, use those wings the good lord gave you and make sure to catch the slipstream at the perfect moment, just as it peaks. 
+</div>
+<div class="sand_blowers_simple_spiral" id="part3">
+<i style="font-size:60px">Get</i> it right and you will skim over the surface of that massive angry-ugly onrushing object, screaming hallelujah, your wingtips caressing the shiny metal beneath you. Get it wrong and you're history &#8211; but not this kid, baby &#8211; and then on the other side you're sucked into a blasting tailwind that catapults you to hell and back. <br><br> 
+<i style="font-size:60px">This</i> is when I personally like to do a triple somersault with 4 1/2 twists in the free position. Or why not my signature double cantilevered Lutz spin before sliding into indescribable calm and silence as the dopamine juices my soul with bliss and tranquillity. Believe me: Windshield surfing is as good as it gets. 
+</div>
+<!-- dhteumeuleu nav menu -->
+<div id="nav">
+	<input type="checkbox" name="nav-switch" id="nav-switch">
+	<label class="label" for="nav-switch">
+		<div class="container">
+			<div class="nav-on">
+				<ul class="menu">
+					<li class="home"><a href="/index">Home</a></li>
+					<li class="list"><a href="/road-games/source">Source</a></li>
+					<li class="arrow back"><a href="/i-think">Prev</a></li>
+					<li class="arrow"><a href="/remember-the-fears">Next</a></li>				</ul>
+			</div>
+			<div class="nav-off">
+				<div id="icon"><div></div><div></div></div>
+				<h1 class="title">road games</h1>
+			</div>
+		</div>
+	</label>
+</div> 
+<!-- end of dhteumeuleu nav menu -->
+<!-- google analytics -->
+<script>
+if (window.location.hostname.indexOf("dhteumeuleu") != -1) {
+	var _gaq = [["_setAccount", "UA-12394130-1"], ["_trackPageview"]];
+	(function() {
+		var ga = document.createElement("script"); ga.async = true;
+		ga.src = "http://www.google-analytics.com/ga.js";
+		(document.getElementsByTagName("head")[0]).appendChild(ga);
+	})();
+}
+</script>
+</body>
+</html>

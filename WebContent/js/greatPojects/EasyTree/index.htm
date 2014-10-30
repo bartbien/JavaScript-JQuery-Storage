@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>EasyTree - Free jquery tree menu</title>
+    <meta name="keywords" content="EasyTree free jquery tree menu js javascript" />
+    <meta name="description" content="EasyTree, free jquery tree menu" />
+	
+	<script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+	
+    <link href="skin-win8/ui.easytree.css" rel="stylesheet" class="skins" type="text/css" />
+    <link href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+    <!--[if lt IE 8]>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/json2/20121008/json2.js"></script>
+    <![endif]-->
+	
+    <script src="jquery.easytree.min.js"></script>
+	
+</head>
+<body>
+
+    Test
+	
+	<div id="demo_menu">
+        <ul>
+            <li><a href="http://www.easyjstree.com" target="_blank" class="current">Home</a></li>
+            <li class="isFolder">
+                Folder 1
+                <ul>
+                    <li><a href="http://www.google.com" target="_blank">Go to Google.com</a></li>
+                    <li><a href="http://www.yahoo.com" target="_blank">Go to Yahoo.com</a></li>
+                </ul>
+            </li>
+            <li>
+                Node 1
+                <ul>
+                    <li>Sub Node 1</li>
+                    <li>Sub Node 2</li>
+                    <li>Sub Node 3</li>
+                </ul>
+            </li>
+            <li>Node 2</li>
+        </ul>
+    </div>
+    <script>
+        $('#demo_menu').easytree();
+    </script>
+	
+</body>
+</html>
+
