@@ -1,0 +1,26 @@
+@CHARSET "ISO-8859-1";
+
+#box {
+	width: 600px;
+	height: 400px;
+	border: solid 1px;
+	display: flex;
+	margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+#pictureBox{
+	margin: auto;
+	width: 150px;
+	height: 250px;
+	border: solid 1px;
+}
+
+#pic1 {
+	color: red;
+}
+
+#pic2 {
+	color: blue;
+}

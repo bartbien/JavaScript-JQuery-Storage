@@ -1,0 +1,72 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Gallery</title>
+
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<style type="text/css">
+#box {
+	display: flex;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+
+
+	border: solid 1px;
+	width: 700px;
+}
+
+#gallery li {
+	display: inline;
+}
+
+#main-img {
+	background: url(bg_img.png) no-repeat 0 0;
+	padding: 26px;
+	margin-left: 25px;
+	margin-top: 30px;
+
+}
+</style>
+<script type="text/JavaScript">
+
+// prepare the form when the DOM is ready 
+$(document).ready(function() {
+	$("#gallery li img").hover(function(){
+		$('#main-img').attr('src',$(this).attr('src').replace('thumb/', ''));
+	});
+	var imgSwap = [];
+	 $("#gallery li img").each(function(){
+		imgUrl = this.src.replace('thumb/', '');
+		imgSwap.push(imgUrl);
+	});
+	$(imgSwap).preload();
+});
+$.fn.preload = function() {
+    this.each(function(){
+        $('<img/>')[0].src = this;
+    });
+}
+</script>
+</head>
+<body>
+
+<div id="box">
+	<div id="gallery"><img src="gallery/img_1.jpg" alt="" id="main-img" />
+	
+	<ul>
+		<li><img src="gallery/thumb/img_1.jpg" alt="" /></li>
+		<li><img src="gallery/thumb/img_2.jpg" alt="" /></li>
+		<li><img src="gallery/thumb/img_3.jpg" alt="" /></li>
+		<li><img src="gallery/thumb/img_4.jpg" alt="" /></li>
+		<li><img src="gallery/thumb/img_5.jpg" alt="" /></li>
+		<li><img src="gallery/thumb/img_6.jpg" alt="" /></li>
+	</ul>
+	</div>
+</div>
+</body>
+</html>

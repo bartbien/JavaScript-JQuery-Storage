@@ -1,0 +1,115 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords"
+	content="web design, website development, web application development, print design, database development, ecommerce websites, search engine optimization, packaging design" />
+<meta name="description"
+	content="Design Chemical, Bangkok provides web design, website development, web application development, print design, database development, ecommerce websites, search engine optimization &amp; packaging design." />
+<meta name="robots" content="all" />
+<title>jQuery Demo - Multiple Ultimate Image Swap Galleries</title>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<style type="text/css">
+body,html,div,blockquote,img,label,p,h1,h2,h3,h4,h5,h6,pre,ul,ol,li,dl,dt,dd,form,a,fieldset,input,th,td
+	{
+	border: 0;
+	outline: none;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	height: 100%;
+	background: #fff;
+	color: #1f1f1f;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Arial, Verdana,
+		sans-serif;
+	font-size: 13px;
+	padding: 7px 0;
+}
+
+ul {
+	list-style: none;
+}
+
+.text-center {
+	text-align: center;
+	padding: 10px 0;
+}
+
+.gallery {
+	width: 660px;
+	margin: 0 auto 20px auto;
+}
+
+.gallery ul {
+	padding-left: 10px;
+}
+
+.gallery li {
+	display: inline;
+	margin-right: 3px;
+}
+
+.main-img {
+	background: url(bg_img.png) no-repeat 0 0;
+	padding: 26px;
+}
+</style>
+<script type="text/JavaScript">
+// prepare the form when the DOM is ready 
+$(document).ready(function() {
+	var galleryClass = '.gallery';
+	$(galleryClass+' li img').hover(function(){
+		var $gallery = $(this).parents(galleryClass);
+		$('.main-img',$gallery).attr('src',$(this).attr('src').replace('thumb/', ''));
+	});
+	var imgSwap = [];
+	 $(galleryClass+' li img').each(function(){
+		imgUrl = this.src.replace('thumb/', '');
+		imgSwap.push(imgUrl);
+	});
+	$(imgSwap).preload();
+});
+$.fn.preload = function() {
+    this.each(function(){
+        $('<img/>')[0].src = this;
+    });
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+<h2 class="text-center">jQuery Demo: Multiple Ultimate Image Swap
+Galleries</h2>
+<div class="gallery"><img src="gallery/img_1.jpg" alt=""
+	class="main-img" />
+<ul>
+	<li><img src="gallery/thumb/img_1.jpg" alt="" /></li>
+	<li><img src="gallery/thumb/img_2.jpg" alt="" /></li>
+	<li><img src="gallery/thumb/img_3.jpg" alt="" /></li>
+	<li><img src="gallery/thumb/img_4.jpg" alt="" /></li>
+	<li><img src="gallery/thumb/img_5.jpg" alt="" /></li>
+	<li><img src="gallery/thumb/img_6.jpg" alt="" /></li>
+</ul>
+</div>
+
+<div class="gallery"><img src="gallery/img_6.jpg" alt=""
+	class="main-img" />
+<ul>
+	<li><img src="gallery/thumb/img_6.jpg" alt="" /></li>
+	<li><img src="gallery/thumb/img_5.jpg" alt="" /></li>
+	<li><img src="gallery/thumb/img_4.jpg" alt="" /></li>
+	<li><img src="gallery/thumb/img_3.jpg" alt="" /></li>
+	<li><img src="gallery/thumb/img_2.jpg" alt="" /></li>
+	<li><img src="gallery/thumb/img_1.jpg" alt="" /></li>
+</ul>
+</div>
+<p class="text-center"><a
+	href="http://www.designchemical.com/blog/index.php/jquery/jquery-image-swap-gallery/">View
+blog post</a></p>
+</body>
+</html>

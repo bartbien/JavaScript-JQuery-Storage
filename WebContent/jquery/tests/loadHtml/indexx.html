@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+
+<script>
+
+
+function GetData() {
+    // 1. Instantiate XHR - Start
+    var xhr;
+    if (window.XMLHttpRequest) 
+        xhr = new XMLHttpRequest();
+    else if (window.ActiveXObject) 
+        xhr = new ActiveXObject("Msxml2.XMLHTTP");
+    else 
+        throw new Error("Ajax is not supported by your browser");
+    // 1. Instantiate XHR - End
+
+    // 2. Handle Response from Server - Start
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState < 4)
+            document.getElementById('div1').innerHTML = "Loading...";
+        else if (xhr.readyState === 4) {
+            if (xhr.status == 200 && xhr.status < 300) 
+                document.getElementById('div1').innerHTML = xhr.responseText;
+        }
+    }
+    // 2. Handle Response from Server - End
+
+    // 3. Specify your action, location and Send to the server - Start    
+    xhr.open('GET', 'ajaxFile.html'); 
+    xhr.send(null);
+    // 3. Specify your action, location and Send to the server - End
+}
+
+                
+
+
+</script> 
+
+</head>
+<body>
+
+<input type="button"  value ="Get Data" onclick ="GetData()" />
+           
+<div id="div1">
+
+</div>
+
+
+</body>
+</html>
