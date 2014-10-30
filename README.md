@@ -26,7 +26,9 @@ HTML5 + JS (Run in explorer browser)
 http://msdn.microsoft.com/en-us/windows/bg125385.aspx
 
 A lot of great projects - 3d in html and js, blender models in js, movements with jquery, 3d function drawers
+
 http://stemkoski.github.io/Three.js/
+
 http://stemkoski.github.io/7DFPS/index.html
 
 Similar to quaqe 
@@ -90,6 +92,7 @@ JQuery
 =========================
 
 http://jqueryui.com/
+
 http://www.jqwidgets.com/
 
 
