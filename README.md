@@ -19,7 +19,7 @@ Great projects:
 Multi Player online game js + node.js (websocket)
 http://browserquest.mozilla.org/
 
-One of the best game in js/html5 - ...  (Run in explorer browser)
+One of the best game in js/html5 - Be aware of serious addiction ;D  (Run in explorer browser)
 http://www.contrejour.ie/
 
 HTML5 + JS (Run in explorer browser)
