@@ -53,22 +53,36 @@ https://developer.mozilla.org/en-US/demos/detail/minipaint
 
 
 Library:
+
 http://en.wikipedia.org/wiki/JavaScript
+
 http://en.wikipedia.org/wiki/JavaScript_engine
+
 http://en.wikipedia.org/wiki/ECMAScript
+
 http://en.wikipedia.org/wiki/Interpreter_%28computing%29
+
 http://en.wikipedia.org/wiki/Parsing
+
 http://en.wikipedia.org/wiki/Interpreted_language
+
 http://en.wikipedia.org/wiki/Scripting_language
+
 http://en.wikipedia.org/wiki/Document_Object_Model
 
 Other related to js:
+
 http://en.wikipedia.org/wiki/Web_browser_engine
+
 http://en.wikipedia.org/wiki/WebGL
+
 http://en.wikipedia.org/wiki/WebSocket
+
 https://developer.mozilla.org/en/docs/WebSockets/Writing_WebSocket_client_applications
 
+
 How Browsers Work: Behind the scenes of modern web browsers
+
 http://www.html5rocks.com/en/tutorials/internals/howbrowserswork/
 
 
