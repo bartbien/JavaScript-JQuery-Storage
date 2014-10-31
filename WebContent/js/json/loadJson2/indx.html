@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<p id="newPictureId" onclick="loadNewOne()"></p>
+<!-- <div id="newPictureId" onclick="loadNewOne()"></div> -->
+
+
+<script type="text/javascript">
+
+function createPicture(jsonObj) {
+	return "<img src=\" " + jsonObj.pictureName + " \">";
+} 
+
+function loadNewOne(){
+	
+	var httpRequest = new XMLHttpRequest();
+
+	httpRequest.onreadystatechange  = function(){
+	    if (httpRequest.readyState == 4  )
+	    {
+	      var jsonObj = JSON.parse(httpRequest.responseText);
+
+	      
+	      document.getElementById("newPictureId").innerHTML = createPicture(jsonObj);
+	      
+	      /* "<img src=\"" + jsonObj.pictureName + "\">"; */
+	      /* "<img src=\"" + imageReveal + "\">"; */
+	    }
+	 }
+	httpRequest.open("GET", "newPicture.json", true);
+	httpRequest.send();
+	
+	/* "<img src=\"" + jsonObj.pictureName + "\">"; */
+	//<img src="1.jpg">
+}
+
+loadNewOne();
+
+</script>
+
+</body>
+</html>
