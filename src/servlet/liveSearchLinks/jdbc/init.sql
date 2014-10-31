@@ -20,8 +20,11 @@ INSERT INTO `webapisamples`.`links` (`linkID`, `linkAddress`, `linkDescription`)
 
 drop database if exists webapisamples;
 
+SELECT * FROM `links` WHERE linkDescription like '%m%';
 
+SELECT * FROM `links` WHERE linkDescription REGEXP '^m';
 
+SELECT name FROM person_tbl WHERE name REGEXP '^st';
 
 
 

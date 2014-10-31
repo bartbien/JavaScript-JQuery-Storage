@@ -47,8 +47,15 @@ showHint("");
 		<div>Suggestions:</div> 
 		<span id="responseID"></span>
 	</div>
-	
-	
+
+	<!-- <table>
+		<thead>
+			<th>Link ID</th>
+			<th>Link</th>
+			<th>Description</th>
+		</thead>
+		
+	</table> -->
 
 </body>
 </html>

@@ -1,4 +1,5 @@
 package servlet.liveSearchLinks.jdbc;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
@@ -14,187 +15,165 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class AjaxServlet
- */
 @WebServlet("/servlet/liveSearchLinksJdbc/linkSearchServlet")
 public class Links extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
+	private final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+	private final String DB_URL = "jdbc:mysql://localhost/webapisamples";
+	private final String USER = "root";
+	private final String PASS = "";
+
 	public Links()
 	{
 		super();
-		// TODO Auto-generated constructor stub
+
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+		}
+		catch (ClassNotFoundException e1)
+		{
+			e1.printStackTrace();
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		
-		databaseConnection(request, response);
-		
-		
-
-		// response.getWriter().print("tesssst ajax");
-
-//		String q = request.getParameter("q");
-//
-//		Writer writer = new PrintWriter(response.getOutputStream());
-//
-//		writer.write("test+" + q);
-//		writer.close();
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
-		response.getWriter().print("from post ");
-	}
-	
-	
-	public static void databaseConnection(HttpServletRequest request, HttpServletResponse response)
-	{
-		// JDBC driver name and database URL
-		final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-		final String DB_URL = "jdbc:mysql://localhost/webapisamples";
-
-		// Database credentials
-		final String USER = "root";
-		final String PASS = "";
-		
-		
 		Connection conn = null;
 		Statement stmt = null;
 		try
 		{
-			// STEP 2: Register JDBC driver
-			Class.forName("com.mysql.jdbc.Driver");
-
-			// STEP 3: Open a connection
-			System.out.println("Connecting to database...");
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
-
-			// STEP 4: Execute a query
-			System.out.println("Creating statement...");
 			stmt = conn.createStatement();
-			String sql;
-			ResultSet rs = null;
-			Writer writer = null;
-			
+
 			String q = request.getParameter("q");
-			
-			if(!q.equals("printAll"))
+
+			if (!q.equals("printAll"))
 			{
-				StringBuilder stringBuilder = new StringBuilder();
-				stringBuilder.append("http://www." + q);
-				
-				sql = "SELECT * FROM links Where linkAddress Like '" + stringBuilder + "%'";
-				
-				System.out.println(sql);
-				
-				rs = stmt.executeQuery(sql);
-
-				// SELECT roleName FROM `user_role` Where rolename Like 'u%';
-
-				writer = new PrintWriter(response.getOutputStream());
-
-				String linkId = null;
-				String linkAddress = null;
-				String linkDescription = null;
-				String responseSet = null;
-				
-				while (rs.next())
-				{
-					linkId = rs.getString("linkID");
-					linkAddress = rs.getString("linkAddress");
-					linkDescription =  rs.getString("linkDescription");
-					responseSet = linkId + " " + linkAddress + " " + linkDescription + "<br>";
-					
-					writer.write(responseSet);
-					
-				}
+				getSpecifyLink(stmt, q, response);
 			}
 			else
 			{
-				StringBuilder stringBuilder = new StringBuilder();
-				stringBuilder.append("http://www." + q);
-				
-				sql = "SELECT * FROM links LIMIT 10";
-				
-				System.out.println(sql);
-				
-				rs = stmt.executeQuery(sql);
-
-				// SELECT roleName FROM `user_role` Where rolename Like 'u%';
-
-				writer = new PrintWriter(response.getOutputStream());
-
-				String linkId = null;
-				String linkAddress = null;
-				String linkDescription = null;
-				String responseSet = null;
-				
-				while (rs.next())
-				{
-					linkId = rs.getString("linkID");
-					linkAddress = rs.getString("linkAddress");
-					linkDescription =  rs.getString("linkDescription");
-					responseSet = linkId + " " + linkAddress + " " + linkDescription + "<br>";
-					
-					writer.write(responseSet);
-					
-				}
+				getAllLinks(stmt, q, response);
 			}
-			
-			
-			
-			writer.close();
-			
-			rs.close();
+
 			stmt.close();
 			conn.close();
 		}
 		catch (SQLException se)
 		{
-			// Handle errors for JDBC
 			se.printStackTrace();
 		}
 		catch (Exception e)
 		{
-			// Handle errors for Class.forName
 			e.printStackTrace();
 		}
 		finally
 		{
-			// finally block used to close resources
 			try
 			{
-				if (stmt != null)
-					stmt.close();
+				conn.close();
+				stmt.close();
 			}
-			catch (SQLException se2)
+			catch (SQLException e)
 			{
-			}// nothing we can do
-			try
-			{
-				if (conn != null)
-					conn.close();
+				e.printStackTrace();
 			}
-			catch (SQLException se)
-			{
-				se.printStackTrace();
-			}// end finally try
-		}// end try
-		System.out.println("Goodbye!");
-	}// end main
-	
+		}
+	}
 
+	private void getSpecifyLink(Statement stmt, String searchKey, HttpServletResponse response)
+	{
+		//String sql = "SELECT * FROM links Where linkAddress Like '" + stringBuilder + "%'";
+
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT * FROM links Where linkAddress Like '" + searchKey + "%'");
+		sql.append(" or linkAddress Like 'http://www." + searchKey + "%'");
+		sql.append(" or linkAddress Like 'http://" + searchKey + "%'");
+		sql.append(" or linkID Like '" + searchKey + "%'");
+		sql.append(" or linkDescription REGEXP '^" + searchKey + "';");
+		
+		System.out.println(sql);
+
+		try
+		{
+			ResultSet rs = stmt.executeQuery(sql.toString());
+
+			PrintWriter writer = new PrintWriter(response.getOutputStream());
+			
+			String linkId = null;
+			String linkAddress = null;
+			String linkDescription = null;
+			String responseSet = null;
+
+			while (rs.next())
+			{
+				linkId = rs.getString("linkID");
+				linkAddress = rs.getString("linkAddress");
+				linkDescription = rs.getString("linkDescription");
+				responseSet = linkId + " " + linkAddress + " " + linkDescription + "<br>";
+
+				writer.write(responseSet);
+
+			}
+
+			writer.close();
+
+			rs.close();
+		}
+		catch (SQLException | IOException e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+
+	private void getAllLinks(Statement stmt, String q, HttpServletResponse response)
+	{
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("http://www." + q);
+
+		String sql = "SELECT * FROM links LIMIT 10";
+
+		System.out.println(sql);
+
+		try
+		{
+			ResultSet rs = stmt.executeQuery(sql);
+
+			PrintWriter writer = new PrintWriter(response.getOutputStream());
+
+			String linkId = null;
+			String linkAddress = null;
+			String linkDescription = null;
+			String responseSet = null;
+
+			while (rs.next())
+			{
+				linkId = rs.getString("linkID");
+				linkAddress = rs.getString("linkAddress");
+				linkDescription = rs.getString("linkDescription");
+				responseSet = linkId + " " + linkAddress + " " + linkDescription + "<br>";
+
+				writer.write(responseSet);
+
+			}
+
+			writer.close();
+
+			rs.close();
+		}
+		catch (SQLException | IOException e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+
+	}
 }
