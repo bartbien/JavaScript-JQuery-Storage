@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<img onmouseover="bigImg(this, '352px', '601px')" onmouseout="normalImg(this, '160px', '320px')" 
+border="0" src="pic.jpg" alt="Smiley" width="320" height="160">
+
+<img onmouseover="bigImg(this, '352px', '601px')" onmouseout="normalImg(this, '160px', '320px')" 
+border="0" src="pic2.jpg" alt="Smiley" width="320" height="160">
+
+
+<script>
+function bigImg(x) {
+    x.style.height = "352px";
+    x.style.width = "601px";
+}
+
+function normalImg(x) {
+    x.style.height = "160px";
+    x.style.width = "320px";
+}
+
+
+function bigImg(x, hieght, width) {
+    x.style.height = hieght;
+    x.style.width = width;
+}
+
+function normalImg(x, hieght, width) {
+    x.style.height = hieght;
+    x.style.width = width;
+}
+
+</script>
+
+</body>
+</html>

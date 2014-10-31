@@ -1,0 +1,18 @@
+[
+	{
+		miniature : 'http://upload.wikimedia.org/wikipedia/commons/6/69/IBM_PC_5150.jpg',
+		picture : 'http://upload.wikimedia.org/wikipedia/commons/6/69/IBM_PC_5150.jpg'
+	},
+	{
+		miniature : 'http://www.notebookcheck.net/uploads/tx_nbc2/samsung-ativ-smart-pc-xe500t1c-a01fr-4.jpg',
+		picture : 'http://www.notebookcheck.net/uploads/tx_nbc2/samsung-ativ-smart-pc-xe500t1c-a01fr-4.jpg'
+	},
+	{
+		miniature : 'http://upload.wikimedia.org/wikipedia/commons/1/19/Amiga_600.jpg',
+		picture : 'http://upload.wikimedia.org/wikipedia/commons/1/19/Amiga_600.jpg'
+	},
+	{
+		miniature : 'http://hawaii-tourismus.com/images/wallpaper/hawaii-wallpaper-09.jpg',
+		picture : 'http://hawaii-tourismus.com/images/wallpaper/hawaii-wallpaper-09.jpg'
+	}
+]

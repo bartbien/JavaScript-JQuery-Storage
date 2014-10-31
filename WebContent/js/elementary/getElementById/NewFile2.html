@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+.buttons{
+	border: solid 1px red;
+	width: 700px;
+}
+
+</style>
+
+<script type="text/javascript">
+
+function changeColor(newColor) {
+	document.getElementById("text").style.color = newColor;
+}
+
+function changeColorDb(newColor) {
+	document.getElementById("buttons").style.color = newColor;
+}
+
+var buttons = [ "test0" , "test1", "test2"];
+
+function printButtons() {
+	for (var i = 0; i < buttons.length; i++) {
+		
+		var textNode = document.createTextNode(buttons[i] + " ");
+		document.getElementById("buttons").appendChild(textNode);
+	}
+}
+
+</script>
+
+</head>
+<body>
+
+<div id="text">text :)</div>
+<div id="buttons" onclick="printButtons()" class="buttons" ondblclick="changeColorDb('Red')">s</div>
+
+
+<button onclick="changeColor('Green');">Green</button>
+<button onclick="changeColor('Black');">Black</button>
+
+</body>
+</html>

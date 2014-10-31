@@ -7,22 +7,55 @@
 <link rel="stylesheet" type="text/css" href="box.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 
+
+
 </head>
 <body>
 
 <div id="box">
 
 	<div id="pictureBox">
-		<div id="pic1"><img src="picture/1.png" /></div>
-		<div>test1</div>
+		<div id="picture1" onclick="addPoint()"><img src="" /></div>
+		<div id="photoDescription1">test1</div>
 	</div>
 	
 	<div id="pictureBox">
-		<div id="pic2"><img src="picture/2.png" /></div>
-		<div>test1</div>
+		<div id="picture2"><img src="picture/2.png" /></div>
+		<div id="photoDescription1">test1</div>
 	</div>
 	
 </div>
+
+<script type="text/javascript">
+
+function addPoint(pictureId) {
+	
+	// ajax send +1 to this photo
+	// each photo in db - id, name, score
+	// response 2 x new photo link in json
+	
+	
+	
+}
+
+function loadPictures() 
+{
+	var xmlhttp;
+	
+	xmlhttp.onreadystatechange = function() 
+	{
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) 
+		{
+			document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+		}
+	}
+	
+	xmlhttp.open("GET", "data.json", true);
+	xmlhttp.send();
+}
+
+	loadPictures();
+</script>
 
 </body>
 </html>

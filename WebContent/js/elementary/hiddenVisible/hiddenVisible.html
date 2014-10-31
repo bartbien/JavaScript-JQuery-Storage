@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+function showPicture(){
+	document.getElementById("pictureId").style.visibility = "visible";
+}
+
+function hidePicture(){
+	document.getElementById("pictureId").style.visibility = "hidden";
+}
+
+</script>
+
+</head>
+<body>
+
+<button id="buttonId" type="button" onclick="showPicture()">Click</button>
+
+<div id="pictureId" onclick="hidePicture()"><img src="pic.jpg"></div>
+
+</body>
+</html>
