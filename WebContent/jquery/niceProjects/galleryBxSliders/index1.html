@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<!-- jQuery library (served from Google) -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<!-- bxSlider Javascript file -->
+<script src="jquery/jquery.bxslider.js"></script>
+<!-- bxSlider CSS file -->
+<link href="css/jquery.bxslider.css" rel="stylesheet" />
+
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$('.bxslider').bxSlider({
+			  auto: true,
+			  autoControls: true
+			});
+	});
+</script>
+
+</head>
+<body>
+	<div class="bx-viewport"
+		style="width: 1000px; height: 500px; margin: auto">
+
+		<ul class="bxslider" style="">
+			<li><img src="img/4.jpg"></li>
+			<li><img src="img/2.jpg"></li>
+			<li><img src="img/3.jpg"></li>
+		</ul>
+
+	</div>
+
+	<!-- 	<div class="slider" style="width: 1000px; height: 600px">
+		<ul class="bxslider">
+			<li><img src="images/tree_root.jpg" /></li>
+			<li><img src="images/hill_road.jpg" /></li>
+			<li><img src="images/trees.jpg" /></li>
+		</ul>
+	</div> -->
+</body>
+</html>

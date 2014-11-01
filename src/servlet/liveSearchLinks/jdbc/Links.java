@@ -86,7 +86,7 @@ public class Links extends HttpServlet
 
 	private void getSpecifyLink(Statement stmt, String searchKey, HttpServletResponse response)
 	{
-		//String sql = "SELECT * FROM links Where linkAddress Like '" + stringBuilder + "%'";
+		// String sql = "SELECT * FROM links Where linkAddress Like '" + stringBuilder + "%'";
 
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT * FROM links Where linkAddress Like '" + searchKey + "%'");
@@ -94,15 +94,17 @@ public class Links extends HttpServlet
 		sql.append(" or linkAddress Like 'http://" + searchKey + "%'");
 		sql.append(" or linkID Like '" + searchKey + "%'");
 		sql.append(" or linkDescription REGEXP '^" + searchKey + "';");
-		
+
 		System.out.println(sql);
+
+		response.setContentType("application/text");
 
 		try
 		{
 			ResultSet rs = stmt.executeQuery(sql.toString());
 
 			PrintWriter writer = new PrintWriter(response.getOutputStream());
-			
+
 			String linkId = null;
 			String linkAddress = null;
 			String linkDescription = null;
@@ -132,6 +134,7 @@ public class Links extends HttpServlet
 
 	private void getAllLinks(Statement stmt, String q, HttpServletResponse response)
 	{
+		response.setContentType("application/text");
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("http://www." + q);
 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<style type="text/css">
+div.mainPicture{
+	border: solid 1px black;
+	width: 500px;
+	height: 500px;
+	margin: 30px;
+}
+
+div.miniatures{
+	margin: 30px;
+}
+</style>
+	
+</head>
+
+<body>
+
+<div id="mainPicture" class="mainPicture"></div>
+<div id="miniatures" class="miniatures"></div>
+
+<script>
+var xmlhttp = new XMLHttpRequest();
+var url = "json.js";
+
+xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var myArr = JSON.parse(xmlhttp.responseText);
+        myFunction(myArr);
+    }
+}
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction(arr) {
+    var out = "";
+    var i;
+    for(i = 0; i < arr.length; i++) {
+        out += '<img src="' + arr[i].url + '" height="300">';
+    }
+    document.getElementById("miniatures").innerHTML = out;
+}
+</script>
+
+</body>
+</html>

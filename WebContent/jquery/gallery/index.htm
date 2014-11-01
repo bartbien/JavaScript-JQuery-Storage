@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Gallery</title>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<style type="text/css">
+.content {
+	background: #222;
+}
+
+#gallery li {
+	display: inline;
+}
+
+#main-img {
+	min-width: 600px;
+}
+</style>
+
+<script type="text/JavaScript">
+
+$(document).ready(function() {
+	
+	// on each hover over miniature img 
+	$("#gallery li img").hover(function(){
+		
+		// replace main img with miniature img
+		$('#main-img').attr('src', $(this).attr('src'));
+	});
+});
+
+
+
+</script>
+
+</head>
+
+<body class="content">
+
+	<h1 style="color: orange;">Gallery</h1>
+	<div id="gallery">
+
+		<img src="gallery/img_1.jpg" id="main-img" width="600px"/>
+
+		<ul>
+			<li><img src="img/1.jpg" width="200px"/></li>
+			<li><img src="img/2.jpg" width="200px"/></li>
+			<li><img src="img/3.jpg" width="200px"/></li>
+		</ul>
+	</div>
+		
+</body>
+</html>
