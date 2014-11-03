@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<style type="text/css">
+
+img.mainPicture{
+	border: solid 5px black;
+	width: 500px;
+	margin: 30px;
+}
+
+img.miniatures{
+	margin: 30px;
+	height: 100px;
+}
+
+</style>
+	
+</head>
+
+<body>
+
+<img src="" id="mainPicture" class="mainPicture" />
+<div id="miniatures"></div>
+
+<script>
+var hPicture = document.getElementById("mainPicture");
+var hMiniatures = document.getElementById("miniatures");
+
+var xmlhttp = new XMLHttpRequest();
+var url = "data.json";
+
+// get json thru ajax
+xmlhttp.onreadystatechange = function() 
+{
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) 
+    {
+        var jsonObj = JSON.parse(xmlhttp.responseText);
+        createGallery(jsonObj); 
+    }
+}
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function createGallery(arr) 
+{
+    var out = "";
+    var i;
+    
+    // create miniatures with onmouseover event
+    for(i = 0; i < arr.length; i++) 
+    {
+        out += '<img src=\'' + arr[i].url + '\' class="miniatures" onmouseover="hPicture.src=\'' + arr[i].url + '\';">';
+    }
+    
+    hMiniatures.innerHTML = out; // add all miniatures to div
+    hPicture.src = arr[0].url; // add first img as main picture
+}
+</script>
+
+</body>
+</html>

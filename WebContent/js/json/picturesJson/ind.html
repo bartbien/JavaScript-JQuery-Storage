@@ -25,10 +25,12 @@ div.miniatures{
 
 <script>
 var xmlhttp = new XMLHttpRequest();
-var url = "json.js";
+var url = "data.json";
 
-xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+xmlhttp.onreadystatechange = function() 
+{
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) 
+    {
         var myArr = JSON.parse(xmlhttp.responseText);
         myFunction(myArr);
     }
@@ -36,12 +38,15 @@ xmlhttp.onreadystatechange = function() {
 xmlhttp.open("GET", url, true);
 xmlhttp.send();
 
-function myFunction(arr) {
+function myFunction(arr) 
+{
     var out = "";
     var i;
-    for(i = 0; i < arr.length; i++) {
+    for(i = 0; i < arr.length; i++) 
+    {
         out += '<img src="' + arr[i].url + '" height="300">';
     }
+    
     document.getElementById("miniatures").innerHTML = out;
 }
 </script>
