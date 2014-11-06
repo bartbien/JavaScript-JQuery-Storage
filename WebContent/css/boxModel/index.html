@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<style type="text/css">
+table {
+	width: 100%;
+}
+
+td, th {
+	font-size: 1em;
+	border: 1px solid #4796e6;
+	padding: 3px 7px 2px 7px;
+}
+
+th {
+	font-size: 1.1em;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 4px;
+	background-color: #4796e6;
+	color: #ffffff;
+}
+
+tr.alt td {
+	color: #000000;
+	background-color: #EAF2D3;
+}
+
+.flow-box {
+	border: solid 1px black;
+	height: auto;
+   	overflow: hidden;
+}
+
+.table-box {
+	border: solid 1px black;
+	width: 30%;
+	
+}
+
+.list-box {
+	float: right;
+	border: solid 1px black;
+	width: 30%;
+} 
+</style>
+
+</head>
+<body>
+
+<h3>Live search for links</h3>
+	<form action="">
+		Type link: <input type="text" onkeyup="search(this.value)" />
+	</form>
+	<br>
+	
+	<div class="flow-box">
+		
+		<div class="list-box">
+			<ul>
+				<li>a</li>
+				<li>b</li>
+				<li>c</li>
+			</ul>
+		</div>
+		
+		<div class="table-box">
+			<table>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Link</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody id="links">
+					<tr>
+						<td>tt</td>
+						<td>aa</td>
+						<td>dd</td>
+					</tr>
+					<tr>
+						<td>tt</td>
+						<td>aa</td>
+						<td>dd</td>
+					</tr>
+					<tr>
+						<td>tt</td>
+						<td>aa</td>
+						<td>dd</td>
+					</tr>
+					<tr>
+						<td>tt</td>
+						<td>aa</td>
+						<td>dd</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</body>
+</html>

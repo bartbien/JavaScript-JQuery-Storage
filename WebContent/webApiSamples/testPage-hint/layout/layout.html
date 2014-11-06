@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<link rel="stylesheet" type="text/css" href="layout.css">
+
+<script>
+	function showHint(str) 
+	{
+		var xmlhttp;
+		
+		if (str.length == 0) 
+		{
+			document.getElementById("txtHint").innerHTML = "";
+			return;
+		}
+		
+		if (window.XMLHttpRequest) 
+		{
+			// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp = new XMLHttpRequest();
+		} else 
+		{
+			// code for IE6, IE5
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		
+		xmlhttp.onreadystatechange = function() 
+		{
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) 
+			{
+				document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+			}
+		}
+		xmlhttp.open("GET", "gethint.jsp?q=" + str, true);
+		xmlhttp.send();
+	}
+</script>
+
+</head>
+
+<body>
+
+	<table class="center" style="width: 900px;" cellpadding="0"
+		cellspacing="0">
+		<tr>
+			<td colspan="2" style="background-color: #0000FF;">
+				<h1 style="margin: 0; padding: 0;">Title</h1>
+			</td>
+		</tr>
+
+		<tr>
+			<td
+				style="background-color: #FFD700; width: 100px; vertical-align: top;">
+				<b>Menu</b><br> sample <br> sample <br> sample <br>
+				sample <br> sample <br> sample <br> sample <br>
+				sample <br> sample <br> sample <br> sample <br>
+				sample <br> sample <br> sample <br> sample <br>
+				sample <br> sample <br> sample <br>
+
+			</td>
+			<td
+				style="background-color: #eeeeee; height: 200px; width: 400px; vertical-align: top;">
+				Content goes here <br>
+				
+				<h3>Start typing a name in the input field below:</h3>
+				<form action="">
+					First name: <input type="text" id="txt1" onkeyup="showHint(this.value)" />
+				</form>
+				<p>
+					Suggestions: <span id="txtHint"></span>
+				</p>
+				
+				
+				
+			</td>
+		</tr>
+
+		<tr>
+			<td colspan="2"
+				style="background-color: #FFA500; text-align: center;"><a
+				href="http://www.phoenixjcam.com">phoenixjcam.com</a></td>
+		</tr>
+	</table>
+
+</body>
+</html>

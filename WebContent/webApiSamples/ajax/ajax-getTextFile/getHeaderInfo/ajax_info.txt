@@ -1,0 +1,12 @@
+<p>AJAX is not a new programming language.</p>
+<p>AJAX is a technique for creating fast and dynamic web pages.</p>
+<p>Async=false
+
+To use async=false, change the third parameter in the open() method to false: <br>
+<br>
+<b>xmlhttp.open("GET", "ajax_info.txt", false);</b><br>
+<br>
+Using async=false is not recommended, but for a few small requests this can be ok.<br>
+<br>
+Remember that the JavaScript will NOT continue to execute, until the server response is ready. <br>
+If the server is busy or slow, the application will hang or stop. <br><p>
