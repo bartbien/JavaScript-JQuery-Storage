@@ -32,7 +32,7 @@
 		{
 			posX: "0",
 			posY: "0",
-			speed: 20
+			speed: "20"
 		};
 		
 		var keys = [];
@@ -54,7 +54,7 @@
 
 		function keyEvent() 
 		{
-			if (keys[37]) 
+			if (keys[37]) // left arrow
 			{
 				player.posX -= player.speed;
 				//velX -= speed;
@@ -62,19 +62,22 @@
 				
 			}
 			
-			if (keys[38]) 
+			if (keys[38]) // up arrow
 			{
+				player.posY -= player.speed;
 				//velY -= speed;
 				//console.log("up arrow key - " + 38);
 			}
 
-			if (keys[39]) 
+			if (keys[39]) // right arrow
 			{
+				player.posX += player.speed;
 				//velX += speed;
 				//console.log("right arrow key - " + 39);
 			}
-			if (keys[40]) 
+			if (keys[40]) // down arrow
 			{
+				player.posY += player.speed;
 				//velY += speed;
 				//console.log("down arrow key - " + 40);
 			}
