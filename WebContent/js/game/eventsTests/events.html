@@ -1,0 +1,87 @@
+<html>
+<body>
+	<div id="gameArea" style="border: 1px solid black; width: 800px; height: 600px">
+		<canvas id="canvas"></canvas>
+	</div>
+	
+	<script>
+		var hGameArea;
+		var hCanvas;
+		var context;
+		
+		window.onload = function init() 
+		{
+			hCanvas = document.getElementById("canvas");
+
+			context = canvas.getContext("2d");
+			gameLoop();
+		}
+
+		window.addEventListener("keydown", function(e) {
+			keys[e.keyCode] = true;
+		});
+		
+		window.addEventListener("keyup", function(e) {
+			keys[e.keyCode] = false;
+		});
+
+		//var velX = 0;
+		//var velY = 0;
+		
+		var player = 
+		{
+			posX: "0",
+			posY: "0",
+			speed: 20
+		};
+		
+		var keys = [];
+		//var speed = 20;
+
+		function gameLoop() 
+		{
+			keyEvent();
+			hCanvas.width = 800;
+			hCanvas.height = 600;
+			
+			//console.log(player.posX);
+		
+			
+			context.fillRect(player.posX, player.posY, 50, 50);
+			
+			window.requestAnimationFrame(gameLoop); // fps 
+		}
+
+		function keyEvent() 
+		{
+			if (keys[37]) 
+			{
+				player.posX -= player.speed;
+				//velX -= speed;
+				//console.log("left arrow key - " + 37);
+				
+			}
+			
+			if (keys[38]) 
+			{
+				//velY -= speed;
+				//console.log("up arrow key - " + 38);
+			}
+
+			if (keys[39]) 
+			{
+				//velX += speed;
+				//console.log("right arrow key - " + 39);
+			}
+			if (keys[40]) 
+			{
+				//velY += speed;
+				//console.log("down arrow key - " + 40);
+			}
+			
+			
+		}
+	</script>
+
+</body>
+</html>
