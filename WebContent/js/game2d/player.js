@@ -5,7 +5,7 @@ function Player() {
 	this.posX = 0;
 	this.posY = 0;
 	this.size = 50;
-	this.speed = 50;
+	this.speed = 20;
 };
 
 Player.prototype.setPosX = function(x) {
