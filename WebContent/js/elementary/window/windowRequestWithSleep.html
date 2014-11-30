@@ -1,0 +1,37 @@
+<html>
+<body>
+
+	<script>
+	
+		
+		window.onload = function init() 
+		{
+			
+			gameLoop();
+		}
+
+
+		function gameLoop() 
+		{
+			// canvas + context g2
+			console.log("test");
+			sleep(1000);
+			window.requestAnimationFrame(gameLoop); // fps 
+		}
+
+		function sleep(milliseconds) 
+		{
+			var start = new Date().getTime();
+			
+			for (var i = 0; i < 1e7; i++) 
+			{
+				if ((new Date().getTime() - start) > milliseconds)
+				{
+				   break;
+				}
+			}
+		}
+	</script>
+
+</body>
+</html>

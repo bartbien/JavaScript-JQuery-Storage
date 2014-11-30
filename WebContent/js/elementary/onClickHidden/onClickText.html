@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<input id="drawButton" type="button" value="test" onclick="frameHandler(this)">
+<div id="frame"></div>
+
+<script>
+
+
+isHidden = 1;
+
+function frameHandler(event)
+{
+	if(isHidden == 1)
+		showFrame(event);
+	else
+		hideFrame(event);
+}
+
+function hideFrame(event)
+{
+	hFrame = document.getElementById("frame");
+	hFrame.innerHTML = "";
+	isHidden = 1;
+}
+
+function showFrame(event)
+{
+	hFrame = document.getElementById("frame");
+	hFrame.innerHTML = "test";
+	isHidden = 0;
+}
+
+</script>
+
+</body>
+</html>

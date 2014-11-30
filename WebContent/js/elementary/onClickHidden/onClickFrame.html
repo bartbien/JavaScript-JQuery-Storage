@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html>
 <body>
+<style>
 
+.frameBox{
+	border: solid 1px black;
+	width: 300px;
+	height: 300px;
+}
+	
+</style>
 
 <input id="drawButton" type="button" value="test" onclick="frameHandler(this)">
-<div id="frame"></div>
+<p></p>
+<div id="frame" ></div>
 
 <script>
-
 
 isHidden = 1;
 
@@ -22,6 +30,7 @@ function frameHandler(event)
 function hideFrame(event)
 {
 	hFrame = document.getElementById("frame");
+	hFrame.className = "";
 	hFrame.innerHTML = "";
 	isHidden = 1;
 }
@@ -29,6 +38,7 @@ function hideFrame(event)
 function showFrame(event)
 {
 	hFrame = document.getElementById("frame");
+	hFrame.className = "frameBox";
 	hFrame.innerHTML = "test";
 	isHidden = 0;
 }
