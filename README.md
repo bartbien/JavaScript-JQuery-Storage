@@ -93,7 +93,11 @@ JQuery
 
 http://jqueryui.com/
 
+frameworks:
+
 http://www.jqwidgets.com/
+
+http://www.igniteui.com/
 
 
 
