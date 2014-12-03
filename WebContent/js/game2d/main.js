@@ -37,7 +37,11 @@
 		context.fillRect(player.getPosX(), player.getPosY(), player.getSize(), player.getSize());
 		
 		window.requestAnimationFrame(gameLoop); // fps 
-	}
+		
+		// window.webkitRequestAnimationFrame(gameLoop);
+		// window.mozRequestAnimationFrame(gameLoop);
+		
+    };
 
 	function movement() 
 	{
