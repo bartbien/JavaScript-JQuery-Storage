@@ -36,7 +36,7 @@
 		
 		context.fillRect(player.getPosX(), player.getPosY(), player.getSize(), player.getSize());
 		
-		window.requestAnimationFrame(gameLoop); // fps 
+		window.requestAnimationFrame(gameLoop); // fps 60x - The number of callbacks is usually 60 times per second
 		
 		// window.webkitRequestAnimationFrame(gameLoop);
 		// window.mozRequestAnimationFrame(gameLoop);
