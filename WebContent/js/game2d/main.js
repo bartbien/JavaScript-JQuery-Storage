@@ -49,6 +49,46 @@
 		checkWalls();
 	}
 	
+	function moveLeft()
+	{
+		var posX = player.getPosX();
+		var posY = player.getPosY();
+		
+		posX -= player.getSpeed();
+		
+		player.setPosX(posX);
+		player.setPosY(posY);
+	}
+	
+	function onClickEvent(moveDirection)
+	{
+		var posX = player.getPosX();
+		var posY = player.getPosY();
+		
+		if(moveDirection == "moveLeft")
+		{
+			posX -= player.getSpeed();
+		}
+		
+		if(moveDirection == "moveUp")
+		{
+			posY -= player.getSpeed();
+		}
+		
+		if(moveDirection == "moveRight")
+		{
+			posX += player.getSpeed();
+		}
+		
+		if(moveDirection == "moveDown")
+		{
+			posY += player.getSpeed();
+		}
+		
+		player.setPosX(posX);
+		player.setPosY(posY);
+	}
+	
 	function keyEvents()
 	{
 		var posX = player.getPosX();
