@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script type="text/javascript">
+
+function getTime() {
+	
+	var date = new Date(); // for now
+	date.getHours(); // => 9
+	date.getMinutes(); // =>  30
+	date.getSeconds(); // => 51
+	
+	_hDemo = document.getElementById('demo');
+	var timer = date.getHours() + ' ' + date.getMinutes() + ' ' + date.getSeconds() + ' ' + date.getMilliseconds();
+	
+	_hDemo.innerHTML = timer;
+}
+
+</script>
+
+<button type="button" onclick="getTime()"> getTime</button>
+
+<p id="demo"></p>
+
+</body>
+</html> 

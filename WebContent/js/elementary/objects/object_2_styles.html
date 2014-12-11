@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>object_2_styles.html</h2>
+
+<script>
+
+	var car = 
+	{
+		type: "Fiat", 
+		model: 500, 
+		color: "white"
+	};
+	
+	function getCarModel() {
+		
+		document.getElementById("getCarModel").innerHTML = car.type;
+	}
+
+//------------------
+//------------------
+//------------------
+	
+	var Connector = function (type) {
+	
+		this.type = type;
+	}
+	
+	Connector.prototype.setType = function(type){
+		this.type = type;
+	}
+	
+	Connector.prototype.getType = function(){
+		this.type;
+	}
+	
+	connector = new Connector("first one");
+
+	function createConnector() {
+		
+		
+		//connector.setType("first one");
+		
+		tmp = connector.getType();
+		
+		document.getElementById("connector").innerHTML = tmp;
+	}
+	
+</script>
+
+<button id="connector" onclick="createConnector()">createConnector</button>
+
+<button id="getCarModel" onclick="getCarModel()">createConnector</button>
+
+</body>
+</html>
