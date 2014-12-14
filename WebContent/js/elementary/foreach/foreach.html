@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+
+packet = {"type": "update", "data" : [{"id":0,"body":[{"x": 10, "y": 140}]}, {"id":1,"body":[{"x": 10, "y": 140}]}]}
+text = "";
+var i;
+for (i = 0; i < packet.data.length; i++) {
+    text += packet.data[i].id + "<br>";
+}
+
+/* cars = ["BMW", "Volvo", "Saab", "Ford"];
+text = "";
+var i;
+for (i = 0; i < cars.length; i++) {
+    text += cars[i] + "<br>";
+} */
+
+document.getElementById("demo").innerHTML = text;
+</script>
+
+</body>
+</html>
