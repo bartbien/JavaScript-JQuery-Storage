@@ -1,0 +1,191 @@
+body
+{	font: 0.9em arial, sans-serif;
+	background: #FFF;
+	margin: 0px;
+	padding: 0px}
+
+
+#blck
+{	background: red;
+	padding: 10px;}
+
+
+#top
+{	background: #46558F url(/_img/bg_top.gif);
+	height: 73px}
+
+#logo
+{	float: left;}
+
+#tagline
+{	font: 18px arial, sans-serif;
+	color: #E9E9E9;
+	text-align: right;
+	letter-spacing: 0px;
+	padding: 51px 12px 0px 10px}
+
+#topmenu
+{	font: 14px arial, sans-serif;
+	color: #0EB8FF;
+	background: #283A7B}
+
+#topmenu td
+{	padding: 0px 20px}
+
+#topmenu td a
+{	color: #FFF;
+	text-decoration: none;}
+
+#topmenu td a:hover
+{	color: #0EB8FF;
+	text-decoration: none;}
+
+.leftmenu
+{	font: bold 14px arial, sans-serif;
+	text-align: left;
+	width: 155px;
+	color: #283A7B}
+
+.leftmenu ul
+{	font: 14px arial, sans-serif;
+	color: #000;
+	margin: 7px 0px 10px 25px;
+	padding: 0px}
+
+.leftmenu ul li
+{	margin: 0px 0px 7px 0px;
+	padding: 0px;
+	list-style-type: square;
+	color: #0DA9EA}
+
+.leftmenu ul li a
+{	color: #3E84D3;
+	text-decoration: none}
+
+.leftmenu ul li a:hover
+{	color: #F19300}
+
+.history
+{	font: 11px sans-serif;
+	text-align: left;
+	width: 155px;
+	margin-top: 10px}
+
+.history ul
+{	margin: 10px 0px 35px 25px;
+	padding: 0px;
+	list-style-type: circle}
+
+.history ul li
+{	margin: 0px;
+	padding: 0px 0px 5px 0px;}
+
+#d01
+{	background: #F7F7F7 url(/_img/bg_01.gif);}
+
+.body
+{	padding: 10px 15px 40px 15px}
+
+.body h1
+{	font: 1.5em arial, sans-serif;
+	color: #283A7B;
+	letter-spacing: -1px;
+	margin: 0px 0px 15px 0px;
+	padding: 0px}
+
+.body h2
+{	font: 1.3em arial, sans-serif;
+	color: #283A7B;
+	letter-spacing: -1px;
+	margin: 0px 0px 15px 0px;
+	padding: 0px}
+
+.body p
+{	font: 0.8em arial, sans-serif;
+	margin: 0px 0px 15px 0px;
+	padding: 0px}
+
+
+.body ul, .body ol 
+{	font: 0.8em arial, sans-serif}
+
+
+.body li
+{	margin-bottom: 8px}
+
+a
+{	color: #3E84D3;
+	text-decoration: none}
+
+a:hover
+{	color: #F19300}
+
+.body table
+{	font: 1em arial, sans-serif}
+
+.body div table td
+{	font: 1em arial, sans-serif;
+	background: #FFF}
+
+.dots
+{	background: url(/_img/dots_h.gif);
+	padding: 0;
+	margin: 5px 0px 10px 0px;
+	overflow: hidden;
+	width: 100%}
+
+#bottom
+{	font: 0.8em arial, sans-serif;
+	color: #686868;
+	background: #F7F7F7;
+	padding: 25px 20px 25px 20px}
+
+#quicklaunch
+{	font: 11px arial, sans-serif;
+	color: #777}
+
+#quicklaunch a
+{	color: #1C7CD8;
+	text-decoration: none;}
+
+#quicklaunch a
+{	color: #208DF5;
+	text-decoration: undeline;}
+
+.sysreq
+{	font: 11px arial, sans-serif;
+	text-align: left;
+	width: 159px;
+	margin-top: 5px;}
+
+.subscription
+{	font: 11px arial, sans-serif;
+	text-align: left;
+	width: 154px;
+	margin-top: 15px}
+
+.subscription span
+{	display: block;
+	margin: 6px 0px 0px 0px}
+
+#subs
+{	width: 100%;
+	font: 11px arial, sans-serif;}
+
+/* 07.12.2007 */
+.hdrrr
+{	font: bold 0.9em trebuchet ms, georgia, arial, sans-serif;
+	margin: 0px 0 5px 20px;
+	padding: 0;
+	float: left;
+	width: 200px;}
+
+ul.samples
+{	float: left;
+	width: 200px;
+	margin: 0 0 10px 20px;
+	padding: 0}
+
+	ul.samples li
+	{	margin: 0 0 0 30px;
+		padding: 0}
