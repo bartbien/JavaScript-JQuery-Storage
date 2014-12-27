@@ -1,0 +1,14 @@
+Dec 27, 2014 5:37:34 PM org.apache.catalina.core.ApplicationContext log
+INFO: HTMLManager: init: Associated with Deployer 'Catalina:type=Deployer,host=localhost'
+Dec 27, 2014 5:37:34 PM org.apache.catalina.core.ApplicationContext log
+INFO: HTMLManager: init: Global resources are available
+Dec 27, 2014 5:37:34 PM org.apache.catalina.core.ApplicationContext log
+INFO: HTMLManager: list: Listing contexts for virtual host 'localhost'
+Dec 27, 2014 5:38:14 PM org.apache.catalina.core.ApplicationContext log
+INFO: HTMLManager: list: Listing contexts for virtual host 'localhost'
+Dec 27, 2014 5:40:03 PM org.apache.catalina.core.ApplicationContext log
+INFO: HTMLManager: undeploy: Undeploying web application at '/speaking'
+Dec 27, 2014 5:40:05 PM org.apache.catalina.core.ApplicationContext log
+INFO: HTMLManager: list: Listing contexts for virtual host 'localhost'
+Dec 27, 2014 5:43:01 PM org.apache.catalina.core.ApplicationContext log
+INFO: HTMLManager: list: Listing contexts for virtual host 'localhost'

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+	//Assign handlers immediately after making the request,
+	//and remember the jqxhr object for this request
+	var jqxhr = $.getJSON("example.json", function() {
+		console.log("success");
+	}).done(function() {
+		console.log("second success");
+	}).fail(function() {
+		console.log("error");
+	}).always(function() {
+		console.log("complete");
+	});
+
+	//Perform other work here ...
+
+	//Set another completion function for the request above
+	jqxhr.complete(function() {
+		console.log("second complete");
+	});
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

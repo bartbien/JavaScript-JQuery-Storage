@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+
+$(document).ready(function(){
+
+    $.getJSON("data.js",function(result){
+      $.each(result, function(i, field){
+    	  
+    	  for (var int = 0; int < 10; int++) {
+    		  $("div").append('<img src=' + field + ' width=300px>');
+		}
+      });
+    });
+ 
+});
+</script>
+</head>
+<body>
+
+<button>Get JSON data</button>
+<div></div>
+
+</body>
+</html>
