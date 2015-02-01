@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <style>
+        tr{
+            border: solid 1px black;
+            width: 200px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <span>Once</span>
+
+    <table>
+        <td>
+            <tr id="test">dddd</tr>
+            <tr>dddd</tr>
+        </td>
+    </table>
+
+<script>
+
+    $( "span" ).on( "click", function() {
+        $( this ).css( "background-color", "yellow" );
+    });
+
+    $('#dddd').click(function(){
+        $(this).css("background-color", "yellow" );
+    });
+
+
+</script>
+</body>
+</html>
